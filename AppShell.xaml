@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Shell
+    x:Class="LoadTracking.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:LoadTracking.Views"
+    xmlns:local="clr-namespace:LoadTracking"
+    Shell.FlyoutBehavior="Locked"
+    FlyoutBackgroundColor="#AAF09A"
+    Title="Load Tracking"
+    FlyoutWidth="200" 
+>
+    <Shell.Resources >
+        <Style Class="FlyoutItemLabelStyle" TargetType="Label" >
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="FontSize" Value="Default" />
+            <Setter Property="FontAttributes" Value="Bold" />
+        </Style>
+    </Shell.Resources>
+    <ShellContent
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" FlyoutItemIsVisible="True"
+        Title="Welome Screen"
+        IsEnabled="False"  />
+    <ShellContent x:Name="btnLoadOprerations"
+                  IsEnabled="False"
+                  IsVisible="True"
+                  Title="Load Details"
+                  ContentTemplate="{DataTemplate views:LoadOprerations}" />
+    <ShellContent x:Name="btnReports"
+                  IsEnabled="True"
+                  Title="Reports" 
+                  IsVisible="{Binding PropertyChanged}"
+                  ContentTemplate="{DataTemplate views:Reports}" />
+    <ShellContent x:Name="btnInvoice"
+                  IsEnabled="True"
+                  Title="Invoice" 
+                  ContentTemplate="{DataTemplate views:Invoice}" />
+    <ShellContent x:Name="btnZipCode"
+                  IsEnabled="True"
+                  Title="Add/Edit Zip" 
+                  ContentTemplate="{DataTemplate views:ZipCodeOperation}" />
+    <ShellContent x:Name="btnDriver"
+                  IsEnabled="True"
+                  Title="Add/Edit Driver" 
+                  ContentTemplate="{DataTemplate views:DriverOperations}" />
+    <ShellContent x:Name="btnAdmin"
+                  IsEnabled="True"
+                  Title="Add/Edit Admin" 
+                  ContentTemplate="{DataTemplate views:AdminOperations}" />
+    <ShellContent x:Name="btnProfile"
+                  IsEnabled="True"
+                  Title="Profile" 
+                  ContentTemplate="{DataTemplate views:Profile}" />
+    <Shell.FlyoutFooter>
+        <StackLayout Margin="15">
+            <Label Text="User ID" TextColor="Black" FontSize="Body" FontAttributes="Bold"/>
+            <Entry x:Name="txtUserID" TextColor="Black" FontSize="Body" FontAttributes="Bold" BackgroundColor="WhiteSmoke" HeightRequest="5"/>
+            <Label Text="Password" TextColor="Black" FontSize="Body" FontAttributes="Bold"/>
+            <Entry x:Name="txtPassword" TextColor="Black" FontSize="Body" FontAttributes="Bold" BackgroundColor="WhiteSmoke" HeightRequest="5"/>
+            <Button x:Name="btnLogin" Text="Login" TextColor ="White" Clicked="btnLogin_Clicked" BorderColor="Green" BorderWidth="2" Margin="0,10">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#124916" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#75DF7D" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="PointerOver">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#537A56" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#537A56" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Focused">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#537A56" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </VisualStateManager.VisualStateGroups>
+            </Button>
+        </StackLayout>
+    </Shell.FlyoutFooter>
+</Shell>
